@@ -36950,7 +36950,7 @@
   display: flex; 
   justify-content:center; 
   align-items:center; 
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .banner-image-container {
@@ -36967,14 +36967,10 @@
   display: none;
 }
 
-/* .banner-image-desk, .banner-image-mob {
-  
-
-} */
-
 .banner-image-desk {
   display: none;
-  max-width: 25rem; 
+  width: 13rem;
+  height: fit-content;
 }
 
 @media only screen and (max-width: 767px) {
@@ -37004,11 +37000,11 @@
 
 }
 
-@media only screen and (min-width: 992px) {
+/* @media only screen and (min-width: 992px) {
   .banner-image-desk {
     max-width: 17rem; 
   }
-}
+} */
  
  </style>
 </head>
@@ -37386,17 +37382,17 @@
                 <!-- Insert banner here -->
                 <div style="display: flex; justify-content: center; margin: 3rem;" class="">
                   <div class="banner_added">
-                    <div class="banner-text">
+                    <div class="banner-text vm-col-md-8">
                       <div>
                         <p style="font-family:VMCircularChatPTT;"><b>The future of viewing is Stream from Virgin Media.</b></p>
-                        <p style="font-family:VMCircularWhisperPTT;">
+                        <p style="font-family:VMCircularWhisperPTT; font-size: 14px;">
                           Grab our brand-new, easy-to-use entertainment service – powered by
                           our ultrafast Virgin Media
-                          broadband. <p id="modal-button"><u>Tell me more</u></a></p>
+                          broadband. <span id="modal-button" style="font-size: 14px;"><u>Tell me more</u></a></span>
                         </p>
                       </div>
                     </div>
-                    <div class="banner-image-container">
+                    <div class="banner-image-container vm-col-md-3">
                       <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_desktop_large.png"
                         alt="banner image" class="banner-image-desk" />
                       <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_mobile_large.png"

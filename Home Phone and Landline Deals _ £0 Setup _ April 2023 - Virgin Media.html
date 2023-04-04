@@ -36883,6 +36883,7 @@
 
 #modal-container {
   display: none;
+  opacity: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -36890,6 +36891,21 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 100;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#modal-container.show{
+  display: block;
+  opacity: 1;
+}
+
+@keyframes fadein {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
 }
 
 #modal-content {
@@ -36903,6 +36919,17 @@
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
+}
+.modal-title{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  position: relative;
+}
+ 
+.modal-X{
+  font-family: Lato; 
+  font-weight: 100;
 }
 
 #close-modal-button {
@@ -36929,7 +36956,7 @@
 }
 
 #close-modal-X:hover {
-  color: #0077cc;
+  color: #000001;
 }
 
 #close-modal-X:active {
@@ -36939,6 +36966,33 @@
 #modal-button{
   cursor: pointer;
 }
+
+.modal-image-mob, .modal-image-desk {
+  width: 100%;
+}
+
+.modal-image-desk {
+  display: none;
+}
+
+#modal-divider{
+  border-top: 1px solid #b2b2b2;
+  margin-bottom: 0.5rem;
+}
+ 
+
+#button-container{
+  display: flex; 
+  justify-content:center; 
+  margin: 1rem 0;
+}
+
+.banner_added-container{
+  display: flex;
+  justify-content: center;
+  margin: 3rem;
+}
+  
 
 .banner_added{
   background-color: #322332;
@@ -36950,7 +37004,12 @@
   display: flex; 
   justify-content:center; 
   align-items:center; 
-  padding: 1rem;
+  padding: 1.5rem;
+  line-height: 1.2rem;
+}
+.banner-text-content{
+  font-family:VMCircularWhisperPTT; 
+  font-size: 14px;
 }
 
 .banner-image-container {
@@ -36959,16 +37018,14 @@
 
 }
 
-.modal-image-mob, .modal-image-desk {
-  width: 100%;
-}
 
-.modal-image-desk {
-  display: none;
-}
 
 .banner-image-desk {
   display: none;
+  width: 13rem;
+  height: fit-content;
+}
+.banner-image-mob {
   width: 13rem;
   height: fit-content;
 }
@@ -36977,6 +37034,9 @@
     #modal-content {
       width: 90%;
       height: 95%;
+  }
+  .banner-text-content{
+    margin-top: 0.5rem;
   }
 }
 
@@ -36999,12 +37059,6 @@
   }
 
 }
-
-/* @media only screen and (min-width: 992px) {
-  .banner-image-desk {
-    max-width: 17rem; 
-  }
-} */
  
  </style>
 </head>
@@ -37380,15 +37434,15 @@
 
 
                 <!-- Insert banner here -->
-                <div style="display: flex; justify-content: center; margin: 3rem;" class="">
+                <div class="banner_added-container">
                   <div class="banner_added">
-                    <div class="banner-text vm-col-md-8">
+                    <div class="banner-text vm-col-xs-11 vm-col-md-8">
                       <div>
                         <p style="font-family:VMCircularChatPTT;"><b>The future of viewing is Stream from Virgin Media.</b></p>
-                        <p style="font-family:VMCircularWhisperPTT; font-size: 14px;">
+                        <p class="banner-text-content">
                           Grab our brand-new, easy-to-use entertainment service – powered by
                           our ultrafast Virgin Media
-                          broadband. <span id="modal-button" style="font-size: 14px;"><u>Tell me more</u></a></span>
+                          broadband. <span id="modal-button"><u>Tell me more</u></a></span>
                         </p>
                       </div>
                     </div>
@@ -37406,18 +37460,18 @@
                 
                 <div id="modal-container">
                   <div id="modal-content">
-                    <div style="display: flex; justify-content: space-between; margin: 1rem 0; position: relative;">
+                    <div class="modal-title">
                       <div>
                         <h3 style="font-family:VMCircularChatPTT;">Stream from Virgin Media</h3>
                       </div>
                       
-                      <div id="close-modal-X" style ="font-family: Lato; font-weight: 100;">&times;</div>
+                      <div id="close-modal-X" class="modal-X">&times;</div>
                                            
                     </div>
-                    <div style="border-top: 1px solid #b2b2b2; margin-bottom: 0.5rem;"></div>
+                    <div style="" id="modal-divider"></div>
                     <div style="margin: 1rem 0;">
                       <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_stream-modal-desktop.jpeg" alt="modal desktop image" class="modal-image-desk">
-                      <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_stream-modal-mobile.jpeg" alt="modal desktop image" class="modal-image-mob">
+                      <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_stream-modal-mobile.jpeg" alt="modal mobile image" class="modal-image-mob">
                     </div>
                     <p style="font-family:VMCircularWhisperPTT;">With our selected broadband bundles, you can get more with Stream – our brand-new, easy-to-use entertainment
                       service. Access all the TV channels and apps you can't live without (like BBC, ITV and YouTube), plus sign
@@ -37426,7 +37480,7 @@
                       <br>
                       <br>Just plug Stream into your telly, kick back and, well, stream on.
                     </p>
-                    <div style="display: flex; justify-content:center; margin: 1rem 0;">
+                    <div id="button-container">
                       <button id="close-modal-button" class="vm-col-xs-11 vm-col-md-5">Back</button>
                     </div>
                   </div>

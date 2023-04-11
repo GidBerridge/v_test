@@ -1,0 +1,284 @@
+const modalBanner = () => { 
+    
+    const stylesModalBanner = () => { 
+        const styleNode=document.createElement('style');
+        styleNode.innerHTML = `#modal-container {
+                    display: none;
+                    opacity: 0;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: rgba(0, 0, 0, 0.8);
+                    z-index: 100;
+                    transition: opacity 0.5s ease-in-out;
+                    }
+                        
+                #modal-container.show{
+                    display: block;
+                    opacity: 1;
+                    }
+                        
+                #modal-content {
+                    /* font-family: VMCircularWhisperPTT; */
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: #fff;
+                    padding: 20px;
+                    border-radius: 5px;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+                    overflow-y: auto;
+                    }
+                .modal-title{
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 1rem 0;
+                    position: relative;
+                    }
+                        
+                .modal-X{
+                    font-family: Lato;
+                    font-weight: 100;
+                    }
+                        
+                #close-modal-button {
+                    display: block;
+                    margin-top: 20px;
+                    padding: 1rem 1.25rem;
+                    background-color: #5f2878;
+                    color: #ffe;
+                    border: none;
+                    border-radius: 30px;
+                    cursor: pointer;
+                    font-family: "VMCircularChatPTT";
+                    font-size: 1.2rem;
+                    }
+                #close-modal-X {
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                    font-size: 36px;
+                    font-weight: lighter;
+                    cursor: pointer;
+                    line-height: 0.6;
+                    color:#b2b2b2;
+                    }
+                        
+                #close-modal-X:hover {
+                    color: #000001;
+                    }
+                    
+                #close-modal-X:active {
+                    transform: scale(0.9);
+                    }
+                    
+                #modal-button{
+                    cursor: pointer;
+                    }
+                    
+                .modal-image-mob, .modal-image-desk {
+                    width: 100%;
+                    }
+                    
+                .modal-image-desk {
+                    display: none;
+                    }
+                        
+                #modal-divider{
+                    border-top: 1px solid #b2b2b2;
+                    margin-bottom: 0.5rem;
+                    }
+                    
+                    
+                #button-container{
+                    display: flex;
+                    justify-content:center;
+                    margin: 1rem 0;
+                    }
+                    
+                .banner_added-container{
+                    display: flex;
+                    justify-content: center;
+                    margin: 3rem;
+                    }
+                    
+                    
+                .banner_added{
+                    background-color: #322332;
+                    border-radius: 3px;
+                    }
+                        
+                .banner-text{
+                    color: #ffe;
+                    display: flex;
+                    justify-content:center;
+                    align-items:center;
+                    padding: 1.5rem;
+                    line-height: 1.2rem;
+                    }
+                .banner-text-content{
+                    font-family:VMCircularWhisperPTT;
+                    font-size: 14px;
+                    }
+                    
+                .banner-image-container {
+                    display: flex;
+                    justify-content: end;
+                    }
+                .banner-image-desk {
+                    display: none;
+                    width: 13rem;
+                    height: fit-content;
+                    }
+                .banner-image-mob {
+                    width: 13rem;
+                    height: fit-content;
+                    }
+                        
+                @media only screen and (max-width: 767px) {
+                    #modal-content {
+                        width: 90%;
+                        height: 95%;
+                    }
+                    .banner-text-content{
+                        margin-top: 0.5rem;
+                    }
+                    }
+                    
+                @media only screen and (min-width: 768px) {
+                    .banner_added{
+                        display: flex;
+                        justify-content: space-between;
+                        }
+                    .banner-image-mob {
+                        display: none;
+                    }
+                    .banner-image-desk {
+                        display: block;
+                    }
+                    .modal-image-mob {
+                        display: none;
+                        }
+                    .modal-image-desk {
+                        display: block;
+                    }
+                        
+                }
+                `;
+        document.head.appendChild(styleNode);
+            }
+
+    const modalElement = () => {
+        const mainContainer = document.createElement('div');
+        mainContainer.innerHTML = `
+            <div class="banner_added-container">
+                <div class="banner_added">
+                    <div class="banner-text vm-col-xs-11 vm-col-md-8">
+                        <div>
+                            <p style="font-family:VMCircularChatPTT;"><b>The future of viewing is Stream from Virgin Media.</b></p>
+                            <p class="banner-text-content">
+                                Grab our brand-new, easy-to-use entertainment service – powered by
+                                our ultrafast Virgin Media
+                                broadband. <span id="modal-button"><u>Tell me more</u></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="banner-image-container vm-col-md-3">
+                        <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_desktop_large.png"
+                            alt="banner image" class="banner-image-desk" />
+                        <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_mobile_large.png"
+                            alt="banner image" class="banner-image-mob" />
+                    </div>
+                </div>
+            </div >
+                
+                
+                
+
+            <div id="modal-container">
+                <div id="modal-content">
+                <div class="modal-title">
+                    <div>
+                        <h3 style="font-family:VMCircularChatPTT;">Stream from Virgin Media</h3>
+                    </div>
+                    <div id="close-modal-X" class="modal-X">&times;</div>
+                </div>
+                <div id="modal-divider"></div>
+                <div style="margin: 1rem 0;">
+                    <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_stream-modal-desktop.jpeg" alt="modal desktop image" class="modal-image-desk">
+                    <img src="https://www.virginmedia.com/content/dam/virginmedia/dotcom/images/ABtest/cro/699_stream-modal-mobile.jpeg" alt="modal mobile image" class="modal-image-mob">
+                </div>
+                <p style="font-family:VMCircularWhisperPTT;">With our selected broadband bundles, you can get more with Stream – our brand-new, easy-to-use entertainment
+                    service. Access all the TV channels and apps you can't live without (like BBC, ITV and YouTube), plus sign
+                    up to entertainment subscriptions like Sky Sports, Netflix and Disney+ and get 10% credit back – so you can
+                    pocket a saving each month.
+                    <br>
+                    <br>Just plug Stream into your telly, kick back and, well, stream on.
+                </p>
+                <div id="button-container">
+                    <button id="close-modal-button" class="vm-col-xs-11 vm-col-md-5">Back</button>
+                </div>
+            </div>
+        </div>
+        `;
+        // document.body.appendChild(mainContainer);
+        return mainContainer
+    } 
+
+    const tag = document.getElementsByTagName('vm-telesales-wrapper');
+
+    if (tag) {
+        console.log('tag exists')
+        stylesModalBanner();
+        tag[0].append(modalElement());
+    }
+
+    const modalButton = document.getElementById("modal-button");
+    const modalContainer = document.getElementById("modal-container");
+    const closeModal = document.getElementById("close-modal-X");
+    const closeModalButton = document.getElementById("close-modal-button");
+
+
+
+    const removeShow = () => {
+        modalContainer.classList.remove("show")
+        setTimeout(function () {
+            modalContainer.style.display = "none"
+        }, 210);
+    }
+
+    modalButton.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        if (modalContainer.style.display == "block") {
+            removeShow()
+        } else {
+            modalContainer.style.display = "block";
+            setTimeout(function () {
+                modalContainer.classList.add("show")
+            }, 20);
+        }
+
+    }, false);
+
+    closeModal.addEventListener("click", function () {
+        removeShow()
+    });
+
+
+    closeModalButton.addEventListener("click", function () {
+        removeShow()
+    });
+
+    window.addEventListener("click", function (event) {
+        if (event.target == modalContainer) {
+            removeShow()
+        }
+    });
+
+}
+
+modalBanner()
